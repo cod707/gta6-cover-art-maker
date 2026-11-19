@@ -3,69 +3,81 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vice City Cover Maker — GTA-style multi-panel cover art, offline</title>
+<title>Neon Coast Cover Maker</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand"><span class="brand-mark">VC</span> Vice City Cover Maker</div>
-  <p class="tagline">Your photos, your caption — a neon-sunset cover in three steps. 100% offline: photos are read on your machine and never uploaded.</p>
+<header class="top">
+  <div>
+    <h1>Neon Coast Cover Maker</h1>
+    <p class="tagline">Your photos + a bold caption, graded into a sunset-neon cover. Everything runs in this page — no uploads, no network.</p>
+  </div>
+  <ol class="steps">
+    <li><strong>1</strong> Pick a layout</li>
+    <li><strong>2</strong> Add photos</li>
+    <li><strong>3</strong> Caption &amp; export</li>
+  </ol>
 </header>
 <main class="app">
-  <section class="controls" aria-label="Cover editor">
-    <h1>Make your cover</h1>
-    <ol class="steps">
-      <li><strong>1 · Add photos</strong>
-        <label class="file-btn">Choose photos… <input id="photos" type="file" accept="image/*" multiple></label>
-        <button id="samples" type="button" class="ghost">Or load the two sample photos</button>
-        <div id="tray" class="tray" aria-label="Loaded photos"></div>
-      </li>
-      <li><strong>2 · Pick a layout</strong>
-        <div id="layouts" class="seg" role="group" aria-label="Panel layout"></div>
-        <div id="panels" class="panels"></div>
-      </li>
-      <li><strong>3 · Caption &amp; grade</strong>
-        <label>Title <input id="title" type="text" maxlength="32" value="Boulevard Queen"></label>
-        <label>Subtitle <input id="subtitle" type="text" maxlength="48" value="A Vice City story"></label>
-        <div class="row">
-          <label>Lettering
-            <select id="lettering">
-              <option value="sunset">Sunset gradient</option>
-              <option value="neon">Neon glow</option>
-              <option value="bold">Bold white</option>
-            </select>
-          </label>
-          <label>Title at
-            <select id="titlePos">
-              <option value="bottom">Bottom</option>
-              <option value="top">Top</option>
-            </select>
-          </label>
-        </div>
-        <div id="grades" class="seg" role="group" aria-label="Colour grade"></div>
-      </li>
-      <li><strong>4 · Export a PNG</strong>
-        <div class="row">
-          <label>Size
-            <select id="exportSize">
-              <option value="1080x1080">Square · 1080 × 1080</option>
-              <option value="1080x1350">Portrait · 1080 × 1350</option>
-              <option value="1920x1080">Wide · 1920 × 1080</option>
-            </select>
-          </label>
-        </div>
-        <button id="export" type="button" class="primary">Export PNG</button>
-        <button id="exportAll" type="button" class="ghost">Export all three sizes</button>
-        <p id="status" role="status"></p>
-      </li>
-    </ol>
-    <p class="fine">Original art made on your machine. No logos, no uploads, no account — just your photos.</p>
+  <section class="controls" aria-label="Cover controls">
+    <fieldset id="layouts">
+      <legend>Layout</legend>
+      <div class="layout-row">
+        <button type="button" data-layout="hero" aria-pressed="false">Hero</button>
+        <button type="button" data-layout="duo" aria-pressed="true">Duo</button>
+        <button type="button" data-layout="quad" aria-pressed="false">Quad</button>
+        <button type="button" data-layout="trio" aria-pressed="false">Trio</button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Photos</legend>
+      <button type="button" id="fillSamples" class="ghost">Load the sample photos</button>
+      <div id="slots"></div>
+      <p class="hint">Photos stay on your machine. Pick a file per panel, then zoom and nudge it into place.</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Words</legend>
+      <label>Title <input id="title" type="text" maxlength="28" value="Neon Coast"></label>
+      <label>Subtitle <input id="subtitle" type="text" maxlength="48" value="A sunset drive"></label>
+      <label>Title size <input id="titleSize" type="range" min="0.6" max="1.4" step="0.05" value="1"></label>
+      <label>Lettering
+        <select id="style">
+          <option value="solid">Solid block</option>
+          <option value="outline">Outline</option>
+          <option value="neon">Neon glow</option>
+        </select>
+      </label>
+      <label>Sunset grade
+        <select id="grade">
+          <option value="sunset">Sunset</option>
+          <option value="neon">Neon nights</option>
+          <option value="gold">Golden hour</option>
+          <option value="teal">Teal dusk</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Export</legend>
+      <label>Size
+        <select id="exportSize">
+          <option value="square">1080 × 1080 (square)</option>
+          <option value="portrait">1080 × 1350 (portrait)</option>
+          <option value="wide">1920 × 1080 (wide)</option>
+        </select>
+      </label>
+      <button type="button" id="export" class="primary">Export PNG</button>
+      <p id="status" role="status"></p>
+    </fieldset>
   </section>
+
   <section class="preview" aria-label="Live preview">
-    <canvas id="cover" width="1080" height="1080" aria-label="Live cover preview"></canvas>
-    <p class="preview-note">Live preview — what you see is the PNG you get.</p>
+    <canvas id="preview" width="1080" height="1080"></canvas>
+    <p class="hint">Live preview — what you see is what exports.</p>
   </section>
 </main>
-<script type="module" src="./src/main.js"></script>
+<script type="module" src="./src/app.js"></script>
 </body>
 </html>

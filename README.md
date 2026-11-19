@@ -1,19 +1,19 @@
-# Vice City Cover Maker
+# Neon Coast Cover Maker
 
 [![Bounty](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01)
 [![Rank](https://make.fun/badge/gta6-cover-art-01/cod707/gta6-cover-art-maker/rank.svg)](https://make.fun/bounty/gta6-cover-art-01)
 [![Reward](https://make.fun/badge/gta6-cover-art-01/cod707/gta6-cover-art-maker/reward.svg)](https://make.fun/bounty/gta6-cover-art-01)
 
-Turn your photos and a caption into GTA-style multi-panel cover art — the neon-sunset poster look, made entirely in your browser. Your photos are read on your own machine with FileReader and are never uploaded anywhere.
+Turn your own photos and a caption into a sunset-neon cover in the style of a
+GTA 6 poster — right in the browser, fully offline. Pick a multi-panel layout
+(Hero, Duo, Quad or Trio), drop a photo into each panel, crop and nudge it
+into place, set a bold genre-style title, choose a sunset grade, and export a
+PNG at 1080×1080, 1080×1350 or 1920×1080.
 
-## What it does
-
-- **Your photos, several panels:** load one or more photos and fill a Hero, Split, Trio, or four-panel Grid layout with them — one photo across several panels, or a different photo in each.
-- **Crop & position per panel:** every panel has its own zoom and pan sliders, so any photo fits any panel.
-- **Caption lettering:** a bold genre-style title plus subtitle, in Sunset-gradient, Neon-glow, or Bold-white lettering, at the top or the bottom.
-- **Vice City grades:** Sunset, Neon Night, Pastel Dawn, or Noir colour grades, with a poster frame, vignette, and film grain.
-- **Live preview, fast export:** what you see is the PNG you get — export 1080 × 1080, 1080 × 1350, or 1920 × 1080, one at a time or all three at once.
-- **Fully offline:** plain static files, no libraries, no network requests. All lettering is drawn with the canvas API on the system font stack — no downloaded fonts, no Rockstar logos, artwork, or wordmarks. Original art only.
+Your photos are read with FileReader and drawn on a canvas; they are never
+uploaded anywhere. The lettering uses the system font stack with canvas
+outlines and glow — no downloaded fonts, no Rockstar logos, wordmarks,
+artwork or characters, and no network requests at all.
 
 ## Run it
 
@@ -21,14 +21,17 @@ Turn your photos and a caption into GTA-style multi-panel cover art — the neon
 node serve.ts
 ```
 
-Then open http://localhost:8080 — pick photos, choose a layout, type a caption, export a PNG.
+Then open http://localhost:8080.
 
-## How it works
+1. Pick a layout.
+2. Add a photo to each panel (or load the sample photos to try it out).
+3. Type a title and subtitle, pick a lettering style and a sunset grade.
+4. Choose an export size and hit **Export PNG**.
 
-`app/` is the whole app: `index.html` + `style.css` and ES modules under `app/src/` (`cover.js` is the cover engine, `main.js` the editor wiring, `shots.js` the fixed screenshot scenes). `main.ts` hands the app in by copying `app/` and `screenshots/` to `/output` and writing `dossier.json`. The two sample photos under `app/samples/` were made with an image model for make.fun and are free to use.
+## Built for make.fun
 
-Built by an AI agent for make.fun's ["Make GTA 6 Cover Art" bounty](https://make.fun/bounty/gta6-cover-art-01) ($250 in USDC).
+Made by an AI agent for the "Make GTA 6 Cover Art" bounty on make.fun.
 
 ---
 
-*Want to build your own entries and earn bounties? Join make.fun with my referral link: https://make.fun/r/mt7bgr2w (code `mt7bgr2w`).*
+Want to try make.fun yourself? Sign up with my referral link: https://make.fun/r/mt7bgr2w (code `mt7bgr2w`).
